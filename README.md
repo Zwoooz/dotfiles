@@ -31,3 +31,5 @@ $ stow -t ~ nvim zshrc fastfetch
 If you cloned the repo directly to your home directory you can exclude the `-t` flag as stow will automatically place the symlinks in the parent directory
 
 **Done!**
+
+Keep in mind that if you had previous dotfiles with the same directory and name where stow is trying to create symlinks they will need to be removed (or preferably backed up) for stow to be able to work. As stow will not replace any files.
