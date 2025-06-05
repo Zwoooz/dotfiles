@@ -24,7 +24,9 @@ alias todo=c3
 #IDK
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share
 
-xrdb -merge ~/.Xresources
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  xrdb -merge ~/.Xresources
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -33,5 +35,10 @@ export NVM_DIR="$HOME/.nvm"
 
 #Plugins
 #source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
