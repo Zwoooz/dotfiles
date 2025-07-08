@@ -272,7 +272,7 @@
   },
   "custom/quit": {
     "format": "󰗼",
-    "tooltip-format": "Quick/Logout",
+    "tooltip-format": "Quit/Logout",
     "on-click": "hyprctl dispatch exit"
   },
   "custom/reboot": {
