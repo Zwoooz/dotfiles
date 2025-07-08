@@ -33,7 +33,6 @@
     },
     {
       "type": "packages",
-      "format": "{} (pacman)",
       "key": " ├ 󰏖 ",
       "keyColor": "31",
     },

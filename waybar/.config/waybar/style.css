@@ -1,3 +1,6 @@
+@import url("file:///home/zwoooz/.cache/wal/colors-waybar.css"); 
+/* WAL_REFRESH: Tue Jul  8 08:16:07 PM CEST 2025 */
+
 @define-color text #DAD4A9;
 @define-color light #C95792;
 @define-color middle #7C4585;
@@ -8,25 +11,21 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: "DejaVuSansM Nerd Font, Not";
-  font-size: 13px;
+  font-size: 14px;
 }
 
-/*TODO: use classes for overall look, see below*/
-.modules-left {
-
+#waybar > * {
+  opacity: 0.8;
 }
 
-.modules-center {
-
-}
-
-.modules-right label {
-
-}
+/* code below doesn't seem to work, not sure how I do this */
+/* #waybar > * :hover { */
+/*   opacity: 0.9; */
+/* } */
 
 #custom-vpn {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px; 
   margin: 5px 0px 0px;
   padding: 0 2px;
@@ -34,8 +33,8 @@
 }
 
 #custom-vpn:hover {
-  background-color: @text;
-  color: @dark;
+  background-color: @foreground;
+  color: @background;
 }
 
 #custom-vpn.vpn-up {
@@ -49,7 +48,7 @@
 window#waybar {
   background-color: transparent;
   /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
-  color: @text;
+  color: @foreground;
   /*transition-property: background-color;*/
   /*transition-duration: .5s;*/
 }
@@ -91,27 +90,27 @@ button:hover {
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
-  background-color: @text;
-  color: @dark;
+  background-color: @foreground;
+  color: @background;
 }
 
 #workspaces button {
   border-radius: 10px; 
   padding: 0 10px;
   margin: 5px 2px 0px;
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   transition: all ease 0.2s;
 }
 #workspaces button.visible {
   /*background-color: #3269a8;*/
-  background-color: @middle;
+  background-color: @color1;
 }
 
 #workspaces button.active {
   /*background-color: #3269a8;*/
-  background-color: @light;
-  padding: 0 25px
+  background-color: @color1;
+  box-shadow: inset 0 0 0 2px @foreground;
 }
 
 
@@ -150,9 +149,14 @@ button:hover {
   color: #ffffff;
 }
 
-#window,
+#window {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
 #workspaces {
-  margin: 0 4px;
+  margin: 0px 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -166,16 +170,16 @@ button:hover {
 }
 
 #clock {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px; 
   margin: 5px 0px 0px;
   transition: all ease 0.2s;
 }
 
 #clock:hover {
-  background-color: @text;
-  color: @dark;
+  background-color: @foreground;
+  color: @background;
 }
 
 #battery {
@@ -230,34 +234,34 @@ label:focus {
 }
 
 #cpu {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px; 
   margin: 5px 0px 0px;
   transition: all ease 0.2s;
 }
 
 #cpu:hover {
-  background-color: @text;
-  color: @dark;
+  background-color: @foreground;
+  color: @background;
 }
 
 #memory {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px; 
   margin: 5px 0px 0px;
   transition: all ease 0.2s;
 }
 
 #memory:hover {
-  background-color: @text;
-  color: @dark;
+  background-color: @foreground;
+  color: @background;
 }
 
 #disk {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px; 
   margin: 5px 0px 0px;
 }
@@ -267,16 +271,16 @@ label:focus {
 }
 
 #network {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px; 
   margin: 5px 0px 0px;
   transition: all ease 0.2s;
 }
 
 #network:hover {
-  background-color: @text;
-  color: @dark;
+  background-color: @foreground;
+  color: @background;
 }
 
 #network.disconnected {
@@ -284,8 +288,8 @@ label:focus {
 }
 
 #pulseaudio {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px; 
   margin: 5px 0px 0px;
   transition: all ease 0.2s;
@@ -320,16 +324,16 @@ label:focus {
 }
 
 #temperature {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px; 
   margin: 5px 0px 0px;
   transition: all ease 0.2s;
 }
 
 #temperature:hover {
-  background-color: @text;
-  color: @dark;
+  background-color: @foreground;
+  color: @background;
 }
 
 #temperature.critical {
@@ -379,7 +383,6 @@ label:focus {
   background: #00b093;
   color: #740864;
   padding: 0 5px;
-  margin: 0 5px;
   min-width: 16px;
 }
 
@@ -387,7 +390,7 @@ label:focus {
   background: #97e1ad;
   color: #000000;
   padding: 0 0px;
-  margin: 0 5px;
+  margin: 0 0 0;
   min-width: 16px;
 }
 
@@ -429,28 +432,30 @@ label:focus {
 }
 
 #power {
-  background-color: @darker;
+  background-color: @backgrounder;
   border-radius: 10px; 
   margin: 5px 10px 0px 0px;
-  padding: 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 #custom-power {
-  background-color: @dark;
-  border-radius: 50%; 
-  padding: 0px 9px 0px 6px;
+  background-color: @background;
+  border-radius: 10px; 
+  padding: 0px 19px 0px 15px;
 }
 
 #custom-power:hover {
   background-color: @red;
   transition: all ease 0.2s;
+  color: @background;
 }
 
 .not-power label {
-  background-color: @dark;
-  border-radius: 50%;
-  padding: 0px 8px 0px 6px;
-  margin: 0px 10px 0px 0px;
+  background-color: @foreground;
+  color: @background;
+  border-radius: 10px;
+  padding: 0px 16px 0px 15px;
+  margin: 0px 5px 0px 0px;
 }
 
 .not-power label:hover {
@@ -459,8 +464,8 @@ label:focus {
 }
 
 #custom-updates {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px;
   padding: 0px 10px 0px 6px;
   margin: 5px 0px 0px 0px;
@@ -468,13 +473,13 @@ label:focus {
 }
 
 #custom-updates:hover {
-  background-color: @text;
-  color: @dark;
+  background-color: @foreground;
+  color: @background;
 }
 
 #custom-weather {
-  background-color: @dark;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border-radius: 10px;
   padding: 0px 6px 0px 6px;
   margin: 5px 0px 0px 0px;
@@ -482,6 +487,6 @@ label:focus {
 }
 
 #custom-weather:hover {
-  background-color: @text;
-  color: @dark;
+  background-color: @foreground;
+  color: @background;
 }

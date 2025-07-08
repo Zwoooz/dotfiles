@@ -272,17 +272,17 @@
   },
   "custom/quit": {
     "format": "󰗼",
-    "tooltip": false,
+    "tooltip-format": "Quick/Logout",
     "on-click": "hyprctl dispatch exit"
   },
   "custom/reboot": {
     "format": "󰜉",
-    "tooltip": false,
+    "tooltip-format": "Reboot",
     "on-click": "reboot"
   },
   "custom/power": {
     "format": "",
-    "tooltip": false,
+    "tooltip-format": "Shut down",
     "on-click": "shutdown now"
   },
   "custom/updates": {
