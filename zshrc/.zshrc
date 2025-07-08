@@ -26,6 +26,7 @@ export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   xrdb -merge ~/.Xresources
+  (cat ~/.cache/wal/sequences &)
 fi
 
 export NVM_DIR="$HOME/.nvm"

@@ -1,26 +1,30 @@
+@import url("file:///home/zwoooz/.cache/wal/colors-waybar.css");
+
 window {
 margin: 0px;
-border: 1px solid #928374;
-background-color: #002b36;
+border: 1px solid @foreground;
+border-radius: 10px;
+background-color: @background;
+opacity: 0.9;
 }
 
 #input {
 margin: 5px;
 border: none;
-color: #839496;
-background-color: #073642;
+color: @foreground;
+background-color: @color1;
 }
 
 #inner-box {
 margin: 5px;
 border: none;
-background-color: #002b36;
+background-color: @background;
 }
 
 #outer-box {
 margin: 5px;
 border: none;
-background-color: #002b36;
+background-color: @background;
 }
 
 #scroll {
@@ -31,9 +35,9 @@ border: none;
 #text {
 margin: 5px;
 border: none;
-color: #839496;
+color: @foreground;
 }
 
 #entry:selected {
-background-color: #073642;
+background-color: @color1;
 }
