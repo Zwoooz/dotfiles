@@ -11,7 +11,9 @@ zstyle :compinstall filename '/home/zwoooz/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-export PATH="$HOME/bin:$PATH"
+
+# add directoris to path
+export PATH="$HOME/bin:$HOME/bin/internal-scripts:$PATH"
 
 PROMPT='%F{cyan}%B%n@%m%b %F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 
@@ -43,3 +45,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+
+# Created by `pipx` on 2025-07-12 18:29:54
+export PATH="$PATH:/home/zwoooz/.local/bin"
