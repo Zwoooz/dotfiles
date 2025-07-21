@@ -8,9 +8,6 @@
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
-    "hyprland/submap",
-    "sway/scratchpad",
-    "custom/media",
     "hyprland/window"
   ],
   "modules-center": [
@@ -25,10 +22,7 @@
     "memory",
     "temperature",
     "custom/weather",
-    "battery",
-    "battery#bat2",
     "clock",
-    //"bluetooth",
     "group/power"
   ],
   // Modules configuration
@@ -60,7 +54,7 @@
       ".*twitch.*": "",
       ".*reddit.*": "",
       //firefox icon as fallback
-      "firefox: .*": "",
+      "firefox: .*": ""
     }
   },
   "hyprland/workspaces": {
@@ -141,7 +135,6 @@
     "spacing": 10
   },
   "clock": {
-    // "timezone": "America/New_York",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%Y-%m-%d}"
   },
@@ -220,15 +213,16 @@
     "format-wifi": "{essid} ({signalStrength}%) ",
     "format-ethernet": " :  {bandwidthDownBits}  {bandwidthUpBits}",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
+    "format-disconnected": "Disconnected ⚠"
   },
   "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon} {format_source}",
+    "tooltip": true,
+    "tooltip-format": "{icon} : {desc}\n : {source_desc}",
+    "format": "{icon}  {volume}% | {format_source}",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": "󰝟 {format_source}",
-    "format-source": "{volume}% ",
+    "format-muted": "󰝟 | {format_source}",
+    "format-source": " {volume}%",
     "format-source-muted": "",
     "format-icons": {
       "headphone": "",

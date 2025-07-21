@@ -1,5 +1,5 @@
-@import url("file:///home/zwoooz/.cache/wal/colors-waybar.css"); 
-/* WAL_REFRESH: Thu Jul 17 05:06:28 PM CEST 2025 */
+@import url("file:///home/zwoooz/.cache/wal/colors-waybar.css");
+/* WAL_REFRESH: Mon Jul 21 11:51:20 AM CEST 2025 */
 
 @define-color text #DAD4A9;
 @define-color light #C95792;
@@ -8,100 +8,142 @@
 @define-color red #FF746C;
 @define-color darker #2f2947;
 
+/* EVERYTHING */
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: "DejaVuSansM Nerd Font, Not";
   font-size: 14px;
 }
 
-#waybar > * {
+
+/* Entire waybar box and everything in it */
+#waybar>* {
   opacity: 0.8;
 }
 
-/* code below doesn't seem to work, not sure how I do this */
-/* #waybar > * :hover { */
-/*   opacity: 0.9; */
-/* } */
+/* Entire box of right modules */
+.modules-right {
+  margin-right: 10px;
+}
 
-#custom-vpn {
+/* All waybar modules */
+label.module {
   background-color: @background;
   color: @foreground;
-  border-radius: 10px; 
+  border-radius: 10px;
   margin: 5px 0px 0px;
-  padding: 0 2px;
+  padding: 0px 6px 0px 6px;
   transition: all ease 0.2s;
 }
 
-#custom-vpn:hover {
+label.module:hover {
   background-color: @foreground;
   color: @background;
 }
 
+/* All waybar buttons */
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 10px;
+}
+
+button:hover {
+}
+
+/* Individual modules */
 #custom-vpn.vpn-up {
-  padding-right: 5px; /* Less padding for narrower icon */
+  padding-right: 5px;
+  /* Less padding for narrower icon */
 }
 
 #custom-vpn.vpn-down {
-  padding-right: 7px; /* More padding to balance width */
+  padding-right: 7px;
+  /* More padding to balance width */
 }
 
 window#waybar {
   background-color: transparent;
-  /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
-  color: @foreground;
-  /*transition-property: background-color;*/
-  /*transition-duration: .5s;*/
 }
 
 window#waybar.hidden {
   opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-background-color: transparent;
-}
-window#waybar.solo {
-background-color: #FFFFFF;
-}
- */
-
-window#waybar.termite {
-  background-color: #3F3F3F;
+#window {
+  margin-left: 12px;
+  margin-top: 10px;
+  margin-bottom: 4px;
 }
 
-window#waybar.chromium {
-  background-color: #000000;
-  border: none;
+/* This one doesn't seem to do anything but I won't touch it */
+#workspaces {
+  margin: 0px 4px;
 }
 
-button {
-  /* Use box-shadow instead of border so the text isn't offset */
-  box-shadow: inset 0 -3px transparent;
-  /* Avoid rounded borders under each button name */
-  border: none;
-  border-radius: 0;
+/* Animation example */
+/*     background-color: #ffffff; */
+/*     color: #000000; */
+/*   } */
+/* } */
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+/* #battery.critical:not(.charging) { */
+/*   background-color: #f53c3c; */
+/*   color: #ffffff; */
+/*   animation-name: blink; */
+/*   animation-duration: 0.5s; */
+/*   animation-timing-function: steps(12); */
+/*   animation-iteration-count: infinite; */
+/*   animation-direction: alternate; */
+/* } */
+
+#network.disconnected {
+  background-color: @red;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-  background: inherit;
+#pulseaudio.muted {
+  color: @red;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
+#temperature.critical {
+  background-color: @red;
+}
+
+#custom-power {
+  background-color: @background;
+  border-radius: 10px;
+  padding: 0px 19px 0px 15px;
+}
+
+#custom-power:hover {
+  background-color: @red;
+}
+
+.not-power label {
   background-color: @foreground;
   color: @background;
+  border-radius: 10px;
+  padding: 0px 16px 0px 15px;
+  margin-right: 5px;
 }
 
+.not-power label:hover {
+  background-color: @red;
+}
+
+#custom-updates {
+  padding-right: 10px;
+}
+
+/* Workspaces */
 #workspaces button {
-  border-radius: 10px; 
   padding: 0 10px;
   margin: 5px 2px 0px;
-  background-color: @background;
-  color: @foreground;
-  transition: all ease 0.2s;
 }
+
 #workspaces button.visible {
   /*background-color: #3269a8;*/
   background-color: @color1;
@@ -113,380 +155,15 @@ button:hover {
   box-shadow: inset 0 0 0 2px @foreground;
 }
 
-
 #workspaces button.urgent {
   background-color: @red;
 }
 
 #workspaces button:hover {
-  background: rgba(255, 255, 255, 0.5);
-}
-
-
-#mode {
-  background-color: #64727D;
-  box-shadow: inset 0 -3px #ffffff;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#mpd {
-  padding: 0 10px;
-  color: #ffffff;
-}
-
-#window {
-  margin-left: 10px;
-  margin-top: 10px;
-  margin-bottom: 4px;
-}
-
-#workspaces {
-  margin: 0px 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
-}
-
-#clock {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px; 
-  margin: 5px 0px 0px;
-  transition: all ease 0.2s;
-}
-
-#clock:hover {
   background-color: @foreground;
   color: @background;
 }
 
-#battery {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-#battery.charging, #battery.plugged {
-  color: #ffffff;
-  background-color: #26A65B;
-}
-
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-    color: #000000;
-  }
-}
-
-/* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-#power-profiles-daemon {
-  padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-  background-color: #f53c3c;
-  color: #ffffff;
-}
-
-#power-profiles-daemon.balanced {
-  background-color: #2980b9;
-  color: #ffffff;
-}
-
-#power-profiles-daemon.power-saver {
-  background-color: #2ecc71;
-  color: #000000;
-}
-
-label:focus {
-  background-color: #000000;
-}
-
-#cpu {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px; 
-  margin: 5px 0px 0px;
-  transition: all ease 0.2s;
-}
-
-#cpu:hover {
-  background-color: @foreground;
-  color: @background;
-}
-
-#memory {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px; 
-  margin: 5px 0px 0px;
-  transition: all ease 0.2s;
-}
-
-#memory:hover {
-  background-color: @foreground;
-  color: @background;
-}
-
-#disk {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px; 
-  margin: 5px 0px 0px;
-}
-
-#backlight {
-  background-color: #90b1b1;
-}
-
-#network {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px; 
-  margin: 5px 0px 0px;
-  transition: all ease 0.2s;
-}
-
-#network:hover {
-  background-color: @foreground;
-  color: @background;
-}
-
-#network.disconnected {
-  background-color: @red;
-}
-
-#pulseaudio {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px; 
-  margin: 5px 0px 0px;
-  transition: all ease 0.2s;
-}
-
-#pulseaudio.muted {
-  background-color: #90b1b1;
-  color: #2a5c45;
-}
-
-#wireplumber {
-  background-color: #fff0f5;
-  color: #000000;
-}
-
-#wireplumber.muted {
-  background-color: #f53c3c;
-}
-
-#custom-media {
-  background-color: #66cc99;
-  color: #2a5c45;
-  min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-  background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-  background-color: #ffa000;
-}
-
-#temperature {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px; 
-  margin: 5px 0px 0px;
-  transition: all ease 0.2s;
-}
-
-#temperature:hover {
-  background-color: @foreground;
-  color: @background;
-}
-
-#temperature.critical {
-  background-color: @red;
-}
-
-#tray {
-  background-color: #2980b9;
-}
-
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-  background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
-}
-
-#mpd {
-  background-color: #66cc99;
-  color: #2a5c45;
-}
-
-#mpd.disconnected {
-  background-color: #f53c3c;
-}
-
-#mpd.stopped {
-  background-color: #90b1b1;
-}
-
-#mpd.paused {
-  background-color: #51a37a;
-}
-
-#language {
-  background: #00b093;
-  color: #740864;
-  padding: 0 5px;
-  min-width: 16px;
-}
-
-#keyboard-state {
-  background: #97e1ad;
-  color: #000000;
-  padding: 0 0px;
-  margin: 0 0 0;
-  min-width: 16px;
-}
-
-#keyboard-state > label {
-  padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-  background-color: transparent;
-}
-
-#privacy {
-  padding: 0;
-}
-
-#privacy-item {
-  padding: 0 5px;
-  color: white;
-}
-
-#privacy-item.screenshare {
-  background-color: #cf5700;
-}
-
-#privacy-item.audio-in {
-  background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-  background-color: #0069d4;
-}
-
-#power {
-  background-color: @backgrounder;
-  border-radius: 10px; 
-  margin: 5px 10px 0px 0px;
-  padding: 0px 0px 0px 0px;
-}
-
-#custom-power {
-  background-color: @background;
-  border-radius: 10px; 
-  padding: 0px 19px 0px 15px;
-}
-
-#custom-power:hover {
-  background-color: @red;
-  transition: all ease 0.2s;
-  color: @background;
-}
-
-.not-power label {
-  background-color: @foreground;
-  color: @background;
-  border-radius: 10px;
-  padding: 0px 16px 0px 15px;
-  margin: 0px 5px 0px 0px;
-}
-
-.not-power label:hover {
-  background-color: @red;
-  transition: all ease 0.2s;
-}
-
-#custom-updates {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px;
-  padding: 0px 10px 0px 6px;
-  margin: 5px 0px 0px 0px;
-  transition: all ease 0.2s;
-}
-
-#custom-updates:hover {
-  background-color: @foreground;
-  color: @background;
-}
-
-#custom-weather {
-  background-color: @background;
-  color: @foreground;
-  border-radius: 10px;
-  padding: 0px 6px 0px 6px;
-  margin: 5px 0px 0px 0px;
-  transition: all ease 0.2s;
-}
-
-#custom-weather:hover {
-  background-color: @foreground;
-  color: @background;
+#workspaces button.active:hover {
+  box-shadow: inset 0 0 0 2px @background;
 }
