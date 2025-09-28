@@ -66,6 +66,7 @@
     "window-rewrite": {
       "title<.*youtube.*>": "",
       "firefox": "",
+      "silent-firefox": "",
       "class<firefox> title<.*github.*>": "",
       "class<firefox> title<.*twitch.*>": "",
       "class<firefox> title<.*reddit.*>": "",

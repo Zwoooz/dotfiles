@@ -1,5 +1,5 @@
 #!/bin/bash
 
 discord &
-sleep 2
+sleep 5
 spotify-launcher &
