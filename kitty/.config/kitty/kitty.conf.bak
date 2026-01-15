@@ -1,7 +1,7 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Macchiato
+# Kanagawa
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -339,7 +339,7 @@ include current-theme.conf
 #: Stop blinking cursor after the specified number of seconds of
 #: keyboard inactivity. Set to zero to never stop blinking.
 
-# cursor_trail 0
+cursor_trail 1
 
 #: Set this to a value larger than zero to enable a "cursor trail"
 #: animation. This is an animation that shows a "trail" following the
@@ -355,7 +355,7 @@ include current-theme.conf
 #: cursor_trail_start_threshold to control when a cursor trail is
 #: started.
 
-# cursor_trail_decay 0.1 0.4
+cursor_trail_decay 0.05 0.1
 
 #: Controls the decay times for the cursor trail effect when the
 #: cursor_trail is enabled. This option accepts two positive float
@@ -367,7 +367,7 @@ include current-theme.conf
 #: trail. Adjust these values to control how quickly the cursor trail
 #: fades away.
 
-# cursor_trail_start_threshold 2
+cursor_trail_start_threshold 0
 
 #: Set the distance threshold for starting the cursor trail. This
 #: option accepts a positive integer value that represents the minimum
@@ -2719,7 +2719,7 @@ include current-theme.conf
 
 
 # BEGIN_KITTY_FONTS
-font_family      family="DejaVuSansM Nerd Font Mono"
+font_family      family="FiraCode Nerd Font Mono"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto

@@ -273,12 +273,12 @@
   "custom/reboot": {
     "format": "󰜉",
     "tooltip-format": "Reboot",
-    "on-click": "reboot"
+    "on-click": "systemctl reboot"
   },
   "custom/power": {
     "format": "",
     "tooltip-format": "Shut down",
-    "on-click": "shutdown now"
+    "on-click": "systemctl poweroff"
   },
   "custom/updates": {
     "format": "{} {icon}",

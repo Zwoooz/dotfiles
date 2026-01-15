@@ -25,7 +25,9 @@ alias todo=c3
 alias cdwow="cd '/mnt/windows/Program Files (x86)/World of Warcraft/_retail_/'"
 alias ll='ls -la'
 alias input-stop="input-remapper-control --command stop --device 'Razer Razer Viper Ultimate Dongle'"
-alias input-load="input-remapper-control --command autoload"
+alias input-load="input-remapper-control --command start --device 'Razer Razer Viper Ultimate Dongle' --preset 'wow ctrl m5'"
+alias rcon-lidl="rcon -a 192.168.0.9:25575 -p rconpasslol"
+alias cbf="clipboard-file.sh"
 
 #IDK
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share
@@ -55,3 +57,9 @@ export PATH="$PATH:/home/zwoooz/.local/bin"
 
 export VISUAL=nvim
 export EDITOR=nvim
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/zwoooz/.dart-cli-completion/zsh-config.zsh ]] && . /home/zwoooz/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
