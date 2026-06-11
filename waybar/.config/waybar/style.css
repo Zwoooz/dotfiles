@@ -1,5 +1,5 @@
 @import url("file:///home/zwoooz/.cache/wal/colors-waybar.css");
-/* WAL_REFRESH: Thu Jan 15 07:43:03 AM CET 2026 */
+/* WAL_REFRESH: Thu Jun 11 10:06:13 AM CEST 2026 */
 
 @define-color text #DAD4A9;
 @define-color light #C95792;
@@ -172,4 +172,85 @@ window#waybar.hidden {
 }
 
 #workspaces button.active:hover {
+}
+
+/* Tailscale */
+.connecting {
+  animation: pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Recording */
+
+#custom-recording {
+  padding: 0 15px;
+}
+
+#custom-recording.recording:hover {
+  animation: none;
+  color: black;
+  background-color: red;
+}
+
+#custom-recording.recording {
+  font-weight: bold;
+  animation: glow 0.8s infinite;
+}
+
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+    color: black;
+    background-color: red;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    color: black;
+    background-color: red;
+  }
+}
+@keyframes glow {
+    0% {
+      text-shadow: 0 0 20px red;
+    color: red;
+  }
+    50% {
+    text-shadow: 0 0 4px red, 0 0 4px rgba(255,0,0,0.5);
+  box-shadow: inset 0 0 0 3px red;
+    color: #ff5555;
+  }
+    100% {
+    text-shadow: 0 0 20px red; color: red;
+  }
+}
+
+@keyframes colorshift {
+    0% {
+    color: red;
+  box-shadow: inset 0 0 0 2px red;
+  }
+    50% {
+    color: black;
+    background-color: red;
+  }
+    100% {
+    color: red;
+  box-shadow: inset 0 0 0 2px red;
+  }
 }

@@ -14,6 +14,7 @@ compinit
 
 # add directories to path
 export PATH="$HOME/bin:$HOME/bin/internal-scripts:$PATH"
+export PATH="$HOME/bin:$HOME/bin/internal-scripts/wcl-markers/:$PATH"
 
 PROMPT='%F{cyan}%B%n@%m%b %F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 
@@ -21,11 +22,9 @@ PROMPT='%F{cyan}%B%n@%m%b %F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 fastfetch
 
 #Aliases
-alias todo=c3
-alias cdwow="cd '/mnt/windows/Program Files (x86)/World of Warcraft/_retail_/'"
-alias ll='ls -la'
-alias input-stop="input-remapper-control --command stop --device 'Razer Razer Viper Ultimate Dongle'"
-alias input-load="input-remapper-control --command start --device 'Razer Razer Viper Ultimate Dongle' --preset 'wow ctrl m5'"
+alias ll='ls -lah'
+alias input-stop="input-remapper-control --command stop --device 'Logitech PRO X 2'"
+alias input-load="input-remapper-control --command start --device 'Logitech PRO X 2' --preset 'wow ctrl m5'"
 alias rcon-lidl="rcon -a 192.168.0.9:25575 -p rconpasslol"
 alias cbf="clipboard-file.sh"
 
@@ -57,6 +56,7 @@ export PATH="$PATH:/home/zwoooz/.local/bin"
 
 export VISUAL=nvim
 export EDITOR=nvim
+export SYSTEMD_EDITOR=nvim
 
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall

@@ -1,300 +1,340 @@
 // -*- mode: jsonc -*-
-{
-  "reload_style_on_change": true,
-  // "layer": "top", // Waybar at top layer
-  // "position": "bottom", // Waybar position (top|bottom|left|right)
-  //"height": 20, // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
-  "spacing": 4, // Gaps between modules (4px)
-  // Choose the order of the modules
-  "modules-left": [
-    "hyprland/window"
-  ],
-  "modules-center": [
-    "hyprland/workspaces"
-  ],
-  "modules-right": [
-    "custom/vpn",
-    "custom/updates",
-    "pulseaudio",
-    "network",
-    "cpu",
-    "memory",
-    "temperature",
-    "custom/weather",
-    "clock",
-    "group/power"
-  ],
-  // Modules configuration
-  "custom/vpn": {
-    "tooltip": false,
-    "format": " VPN {} ",
-    "return-type": "json",
-    "exec": "mullvad status | grep -q 'Connected' && echo '{\"text\": \"<span foreground=\\\"green\\\"></span>\", \"class\": \"vpn-up\"}' || echo '{\"text\": \"<span foreground=\\\"red\\\"></span>\", \"class\": \"vpn-down\"}'",
-    "interval": 5,
-    "on-click": "mullvad connect",
-    "on-click-right": "mullvad disconnect"
+[
+  {
+    "reload_style_on_change": true,
+    "output": "HDMI-A-1", // different Waybar on vertical monitor
+    "spacing": 4,
+    "modules-center": []
   },
-  // window module doesn't support classes in rewrite
-  // putting class in title is a workaround for regex use
-  "hyprland/window": {
-    "format": "{class}: {title}",
-    "separate-outputs": true,
-    "rewrite": {
-      "kitty: .*": "",
-      ".*nvim.*": "",
-      "discord: .*": "",
-      "spotify: .*": "",
-      "steam: .*": "",
-      "plex: .*": "󰚺",
-      // wildcards, will match any window, not just firefox
-      // not great practice but works for now
-      ".*youtube.*": "",
-      ".*github.*": "",
-      ".*twitch.*": "",
-      ".*reddit.*": "",
-      //firefox icon as fallback
-      "firefox: .*": ""
-    }
-  },
-  "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{id}",
-    "window-rewrite-default": "",
-    "window-rewrite": {
-      "title<.*youtube.*>": "",
-      "firefox": "",
-      "silent-firefox": "",
-      "class<firefox> title<.*github.*>": "",
-      "class<firefox> title<.*twitch.*>": "",
-      "class<firefox> title<.*reddit.*>": "",
-      "kitty": "",
-      "discord": "",
-      "spotify": "",
-      "steam": ""
-    }
-  },
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "locked": "",
-      "unlocked": ""
-    }
-  },
-  "hyprland/submap": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
-  "sway/scratchpad": {
-    "format": "{icon} {count}",
-    "show-empty": false,
-    "format-icons": [
-      "",
-      ""
+  {
+    "reload_style_on_change": true,
+    "output": "!HDMI-A-1", // Waybar not on vertical monitor (does not fit)
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    //"height": 20, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+      "hyprland/window"
     ],
-    "tooltip": true,
-    "tooltip-format": "{app}: {title}"
-  },
-  "mpd": {
-    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-    "format-disconnected": "Disconnected ",
-    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-    "unknown-tag": "N/A",
-    "interval": 5,
-    "consume-icons": {
-      "on": " "
+    "modules-center": [
+      "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "custom/recording",
+      "custom/tailscale",
+      "custom/vpn",
+      "custom/updates",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "temperature",
+      "custom/weather",
+      "clock",
+      "group/power"
+    ],
+    // Modules configuration
+    "custom/vpn": {
+      "tooltip": false,
+      "format": " VPN {} ",
+      "return-type": "json",
+      "exec": "mullvad status | grep -q 'Connected' && echo '{\"text\": \"<span foreground=\\\"green\\\"></span>\", \"class\": \"vpn-up\"}' || echo '{\"text\": \"<span foreground=\\\"red\\\"></span>\", \"class\": \"vpn-down\"}'",
+      "interval": 5,
+      "on-click": "mullvad connect",
+      "on-click-right": "mullvad disconnect"
     },
-    "random-icons": {
-      "off": "<span color=\"#f53c3c\"></span> ",
-      "on": " "
+    // window module doesn't support classes in rewrite
+    // putting class in title is a workaround for regex use
+    "hyprland/window": {
+      "format": "{class}: {title}",
+      "separate-outputs": true,
+      "rewrite": {
+        "kitty: .*": "",
+        ".*nvim.*": "",
+        "discord: .*": "",
+        "spotify: .*": "",
+        "ncspot: .*": " (ncspot)",
+        "steam: .*": "",
+        "plex: .*": "󰚺",
+        // wildcards, will match any window, not just firefox
+        // not great practice but works for now
+        ".*youtube.*": "",
+        ".*github.*": "",
+        ".*twitch.*": "",
+        ".*reddit.*": "",
+        //firefox icon as fallback
+        "firefox: .*": ""
+      }
     },
-    "repeat-icons": {
-      "on": " "
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "all-outputs": true,
+      "warp-on-scroll": false,
+      "format": "{id}",
+      "window-rewrite-default": "",
+      "window-rewrite": {
+        "title<.*youtube.*>": "",
+        "firefox": "",
+        "silent-firefox": "",
+        "class<firefox> title<.*github.*>": "",
+        "class<firefox> title<.*twitch.*>": "",
+        "class<firefox> title<.*reddit.*>": "",
+        "kitty": "",
+        "discord": "",
+        "spotify": "",
+        "steam": ""
+      }
     },
-    "single-icons": {
-      "on": "1 "
+    "keyboard-state": {
+      "numlock": true,
+      "capslock": true,
+      "format": "{name} {icon}",
+      "format-icons": {
+        "locked": "",
+        "unlocked": ""
+      }
     },
-    "state-icons": {
-      "paused": "",
-      "playing": ""
+    "hyprland/submap": {
+      "format": "<span style=\"italic\">{}</span>"
     },
-    "tooltip-format": "MPD (connected)",
-    "tooltip-format-disconnected": "MPD (disconnected)"
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
-  },
-  "tray": {
-    // "icon-size": 21,
-    "spacing": 10
-  },
-  "clock": {
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%Y-%m-%d}"
-  },
-  "cpu": {
-    "format": " {usage}%",
-    "tooltip": true
-  },
-  "memory": {
-    "format": " {percentage}%"
-  },
-  "temperature": {
-    "thermal-zone": 1,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{icon} {temperatureC}°C",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ]
-  },
-  "backlight": {
-    // "device": "acpi_video1",
-    "format": "{percent}% {icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  "battery": {
-    "states": {
-      // "good": 95,
-      "warning": 30,
-      "critical": 15
+    "sway/scratchpad": {
+      "format": "{icon} {count}",
+      "show-empty": false,
+      "format-icons": [
+        "",
+        ""
+      ],
+      "tooltip": true,
+      "tooltip-format": "{app}: {title}"
     },
-    "format": "{capacity}% {icon}",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  "battery#bat2": {
-    "bat": "BAT2"
-  },
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
-    }
-  },
-  "network": {
-    "tooltip": false,
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": " :  {bandwidthDownBits}  {bandwidthUpBits}",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠"
-  },
-  "pulseaudio": {
-    "tooltip": true,
-    "tooltip-format": "{icon} : {desc}\n : {source_desc}",
-    "format": "{icon}  {volume}% | {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": "󰝟 | {format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": [
-        "",
-        "",
-        ""
+    "mpd": {
+      "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+      "format-disconnected": "Disconnected ",
+      "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+      "unknown-tag": "N/A",
+      "interval": 5,
+      "consume-icons": {
+        "on": " "
+      },
+      "random-icons": {
+        "off": "<span color=\"#f53c3c\"></span> ",
+        "on": " "
+      },
+      "repeat-icons": {
+        "on": " "
+      },
+      "single-icons": {
+        "on": "1 "
+      },
+      "state-icons": {
+        "paused": "",
+        "playing": ""
+      },
+      "tooltip-format": "MPD (connected)",
+      "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
+    },
+    "tray": {
+      // "icon-size": 21,
+      "spacing": 10
+    },
+    "clock": {
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+      "format": " {usage}%",
+      "tooltip": true
+    },
+    "memory": {
+      "format": " {percentage}%"
+    },
+    "temperature": {
+      "thermal-zone": 1,
+      // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+      "critical-threshold": 80,
+      // "format-critical": "{temperatureC}°C {icon}",
+      "format": "{icon} {temperatureC}°C",
+      "format-icons": [
+        "",
+        "",
+        ""
       ]
     },
-    "on-click": "pavucontrol"
-  },
-  "custom/media": {
-    "format": "{icon} {text}",
-    "return-type": "json",
-    "max-length": 40,
-    "format-icons": {
-      "spotify": "",
-      "default": "🎜"
+    "backlight": {
+      // "device": "acpi_video1",
+      "format": "{percent}% {icon}",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
     },
-    "escape": true,
-    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-    // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-  },
-  "group/power": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 200,
-      "children-class": "not-power",
-      "transition-left-to-right": false
+    "battery": {
+      "states": {
+        // "good": 95,
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{capacity}% {icon}",
+      "format-full": "{capacity}% {icon}",
+      "format-charging": "{capacity}% ",
+      "format-plugged": "{capacity}% ",
+      "format-alt": "{time} {icon}",
+      // "format-good": "", // An empty format will hide the module
+      // "format-full": "",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
     },
-    "modules": [
-      "custom/power", // First element is the "group leader" and won't ever be hidden
-      "custom/quit",
-      "custom/reboot"
-    ]
-  },
-  "custom/quit": {
-    "format": "󰗼",
-    "tooltip-format": "Quit/Logout",
-    "on-click": "hyprctl dispatch exit"
-  },
-  "custom/reboot": {
-    "format": "󰜉",
-    "tooltip-format": "Reboot",
-    "on-click": "systemctl reboot"
-  },
-  "custom/power": {
-    "format": "",
-    "tooltip-format": "Shut down",
-    "on-click": "systemctl poweroff"
-  },
-  "custom/updates": {
-    "format": "{} {icon}",
-    "return-type": "json",
-    "format-icons": {
-      "has-updates": "󱍷",
-      "updated": "󰂪"
+    "battery#bat2": {
+      "bat": "BAT2"
     },
-    "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
-  },
-  "custom/weather": {
-    "format": "{}°",
-    "tooltip": true,
-    "interval": 3600,
-    "exec": "wttrbar",
-    "return-type": "json"
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network": {
+      "tooltip": false,
+      // "interface": "wlp2*", // (Optional) To force the use of this interface
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": " :  {bandwidthDownBits}  {bandwidthUpBits}",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠"
+    },
+    "pulseaudio": {
+      "tooltip": true,
+      "tooltip-format": "{icon} : {desc}\n : {source_desc}",
+      "format": "{icon}  {volume}% | {format_source}",
+      "format-bluetooth": "{volume}% {icon} {format_source}",
+      "format-bluetooth-muted": " {icon} {format_source}",
+      "format-muted": "󰝟 | {format_source}",
+      "format-source": " {volume}%",
+      "format-source-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "on-click": "pavucontrol"
+    },
+    "custom/media": {
+      "format": "{icon} {text}",
+      "return-type": "json",
+      "max-length": 40,
+      "format-icons": {
+        "spotify": "",
+        "default": "🎜"
+      },
+      "escape": true,
+      "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+      // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "group/power": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 200,
+        "children-class": "not-power",
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "custom/power", // First element is the "group leader" and won't ever be hidden
+        "custom/quit",
+        "custom/reboot"
+      ]
+    },
+    "custom/quit": {
+      "format": "󰗼",
+      "tooltip-format": "Quit/Logout",
+      "on-click": "hyprctl dispatch exit"
+    },
+    "custom/reboot": {
+      "format": "󰜉",
+      "tooltip-format": "Reboot",
+      "on-click": "systemctl reboot",
+      "on-click-middle": "systemctl reboot --firmware-setup"
+    },
+    "custom/power": {
+      "format": "",
+      "tooltip-format": "Shut down",
+      "on-click": "systemctl poweroff"
+    },
+    "custom/updates": {
+      "format": "{} {icon}",
+      "return-type": "json",
+      "format-icons": {
+        "has-updates": "󱍷",
+        "updated": "󰂪"
+      },
+      "exec-if": "which waybar-module-pacman-updates",
+      "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
+    },
+    "custom/weather": {
+      "format": "{}°",
+      "tooltip": true,
+      "interval": 3600,
+      "exec": "wttrbar",
+      "return-type": "json"
+    },
+    "custom/tailscale": {
+      "exec": "~/.config/waybar/scripts/tailscale.sh --status",
+      "on-click": "exec ~/.config/waybar/scripts/tailscale.sh --toggle",
+      "exec-on-event": true,
+      "format": "{icon} {text}",
+      "format-icons": {
+        "connected": "",
+        "stopped": "",
+        "connecting": "",
+        "disconnecting": ""
+      },
+      "tooltip": true,
+      "return-type": "json",
+      "interval": 5
+    },
+    "custom/recording": {
+      "exec": "~/.config/waybar/scripts/gsr.sh --status",
+      "on-click": "~/.config/waybar/scripts/gsr.sh --toggle",
+      "exec-on-event": true,
+      "return-type": "json",
+      "interval": 5,
+      "format": "{icon} {text}",
+      "format-icons": {
+        "default": "",
+        "recording": "󰑊"
+      }
+    }
   }
-}
+]
