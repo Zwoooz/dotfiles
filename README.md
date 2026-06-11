@@ -34,6 +34,7 @@ If you cloned the repo directly to your home directory you can exclude the `-t` 
 
 Keep in mind that if you had previous dotfiles with the same directory and name where stow is trying to create symlinks they will need to be removed (or preferably backed up) for stow to be able to work. As stow will not replace any files.
 
-**Note:**
-
-I don't recommend using my .zshrc (unless you're me) as it contains things that are specific for my use case.
+>[!NOTE]
+>I don't recommend using my .zshrc (unless you're me) as it contains things that are specific for my use case.
+>
+>The dunstrc is symlinked to the cache file generated via pywal16, I can't remember why I did this but if you wanna use it modify the symlink to your user.
