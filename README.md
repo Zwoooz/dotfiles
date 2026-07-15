@@ -28,7 +28,7 @@ For example:
 ```
 $ stow -t ~ nvim zshrc fastfetch
 ```
-If you cloned the repo directly to your home directory you can exclude the `-t` flag as stow will automatically place the symlinks in the parent directory
+If you cloned the repo directly to your home directory you can exclude `-t ~` since stow will automatically place the symlinks in the parent directory
 
 **Done!**
 
